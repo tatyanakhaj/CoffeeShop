@@ -26,6 +26,9 @@ namespace CoffeeShop
 
         static void Main()
         {
+            // TODO: move all Main logic and static classes to ShiftManager class.
+            //       Static is not good - change them to regular methods
+
             SetShifts();
 
             ShowWhoIsOnShift();
@@ -215,98 +218,74 @@ namespace CoffeeShop
                     PastriesType = selectedType as PastriesType?
                 });
 
-                double total = order.CalculateTotal();
-
-                Console.WriteLine($"\nTOTAL: {total} lv");
-
-                Console.Write("\nEnter paid amount: ");
-                if (!double.TryParse(Console.ReadLine(), out double paid))
-                {
-                    Console.WriteLine("Invalid payment!");
-                    return;
-                }
-
-                if (paid < total)
-                {
-                    Console.WriteLine("Not enough money!");
-                    return;
-                }
-
-                double change = paid - total;
-
-                Console.WriteLine($"Paid: {paid} lv");
-                Console.WriteLine($"Change: {change} lv");
-
-                order.Status = OrderStatus.Completed;
-
-                Console.WriteLine("\nHave a nice day!");
+                CloseOrder(emp, order);
             }
         }
-            static void CloseOrder(Employee emp, Order order)
+        static void CloseOrder(Employee emp, Order order)
+        {
+            if (emp is not IPaymentProcessor)
             {
-                if (emp is not IPaymentProcessor)
-                {
-                    Console.WriteLine("You cannot close orders!");
-                    return;
-                }
-
-                if (order.Items == null || order.Items.Count == 0)
-                {
-                    Console.WriteLine("No items in order!");
-                    return;
-                }
-
-                double total = order.CalculateTotal();
-
-                Console.WriteLine($"\nTOTAL PRICE: {total} lv");
-
-                Console.Write("Enter paid amount: ");
-                if (!double.TryParse(Console.ReadLine(), out double paid))
-                {
-                    Console.WriteLine("Invalid input!");
-                    return;
-                }
-
-                if (paid < total)
-                {
-                    Console.WriteLine("Not enough money!");
-                    return;
-                }
-
-                double change = paid - total;
-
-                Console.WriteLine($"Paid: {paid} lv");
-                Console.WriteLine($"Change: {change} lv");
-
-                order.Status = OrderStatus.Completed;
-
-                Console.WriteLine("Have a nice day!");
+                Console.WriteLine("You cannot close orders!");
+                return;
             }
 
-            // CANCEL
-            static void CancelOrder(Employee emp, Order order)
+            if (order.Items == null || order.Items.Count == 0)
             {
-                if (emp is not IOrderCanceller)
-                {
-                    Console.WriteLine("You cannot cancel orders!");
-                    return;
-                }
-
-                order.Status = OrderStatus.Cancelled;
-                Console.WriteLine("Order cancelled.");
+                Console.WriteLine("No items in order!");
+                return;
             }
 
-            // CLOSE SHIFT
-            static void CloseShift(Employee emp)
-            {
-                if (emp is not Manager)
-                {
-                    Console.WriteLine("Only manager can close shift!");
-                    return;
-                }
+            double total = order.CalculateTotal();
 
-                Console.WriteLine("Shift closed.");
+            Console.WriteLine($"\nTOTAL PRICE: {total} lv");
+
+            Console.Write("Enter paid amount: ");
+            if (!double.TryParse(Console.ReadLine(), out double paid))
+            {
+                Console.WriteLine("Invalid input!");
+                return;
             }
+
+            if (paid < total)
+            {
+                Console.WriteLine("Not enough money!");
+                return;
+            }
+
+            double change = paid - total;
+
+            Console.WriteLine($"Paid: {paid} lv");
+            Console.WriteLine($"Change: {change} lv");
+
+            order.Status = OrderStatus.Completed;
+
+            Console.WriteLine("Have a nice day!");
+        }
+
+        // CANCEL
+        static void CancelOrder(Employee emp, Order order)
+        {
+            if (emp is not IOrderCanceller)
+            {
+                Console.WriteLine("You cannot cancel orders!");
+                return;
+            }
+
+            order.Status = OrderStatus.Cancelled;
+            Console.WriteLine("Order cancelled.");
+        }
+
+        // CLOSE SHIFT
+        static void CloseShift(Employee emp)
+        {
+            if (emp is not Manager)
+            {
+                Console.WriteLine("Only manager can close shift!");
+                return;
+            }
+
+            Console.WriteLine("Shift closed.");
         }
     }
+}
 
