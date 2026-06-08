@@ -1,145 +1,173 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Tea">
-    <Position X="16.25" Y="5.75" Width="1.5" />
+    <Position X="7.5" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Tea.cs</FileName>
+      <FileName>Menu\Drinks\Tea.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoffeeShop.Barista">
-    <Position X="9.5" Y="4" Width="1.5" />
+    <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Barista.cs</FileName>
+      <FileName>Roles\Barista.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CoffeeShop.Cashier" Collapsed="true">
-    <Position X="14" Y="4" Width="1.5" />
+  <Class Name="CoffeeShop.Cashier">
+    <Position X="5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAEAQAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
-      <FileName>Cashier.cs</FileName>
+      <FileName>Roles\Cashier.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CoffeeShop.Coffee" Collapsed="true">
-    <Position X="23.75" Y="5.75" Width="1.5" />
+  <Class Name="CoffeeShop.Coffee">
+    <Position X="11" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAECAAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>Coffee.cs</FileName>
+      <FileName>Menu\Drinks\Coffee.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CoffeeShop.Drink" Collapsed="true">
-    <Position X="20.5" Y="4.5" Width="1.5" />
+  <Class Name="CoffeeShop.Drink">
+    <Position X="9.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Drink.cs</FileName>
+      <FileName>Menu\Drinks\Drink.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoffeeShop.Employee">
-    <Position X="12.75" Y="1" Width="1.5" />
+    <Position X="3.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAACAAAAAAgAAAEAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Employee.cs</FileName>
+      <HashCode>AAAAACAAAAAAgAAEEIAAAAQAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Roles\Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CoffeeShop.Food" Collapsed="true">
-    <Position X="23.25" Y="4.5" Width="1.5" />
+  <Class Name="CoffeeShop.Food">
+    <Position X="13.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Food.cs</FileName>
+      <FileName>Menu\FoodItems\Food.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CoffeeShop.Fresh" Collapsed="true">
-    <Position X="20.5" Y="5.75" Width="1.5" />
+  <Class Name="CoffeeShop.Fresh">
+    <Position X="9.25" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Fresh.cs</FileName>
+      <FileName>Menu\Drinks\Fresh.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoffeeShop.Manager">
-    <Position X="11.75" Y="4" Width="1.5" />
+    <Position X="2.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAACAAgAAEAAAABAACAAAAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>Manager.cs</FileName>
+      <FileName>Roles\Manager.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="CoffeeShop.MenuItem" Collapsed="true">
-    <Position X="20.5" Y="3" Width="1.5" />
+  <Class Name="CoffeeShop.MenuItem">
+    <Position X="11.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAggAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MenuItem.cs</FileName>
+      <HashCode>AAAAAAAAAQAggAAAAAAAAAQAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Menu\MenuItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoffeeShop.Order">
-    <Position X="28" Y="2.75" Width="1.5" />
+    <Position X="19.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAEAAAACAAAAAAAAAAAAAAAQAAAAAAAAAAAAAE=</HashCode>
-      <FileName>Order.cs</FileName>
+      <HashCode>AAACAAAEAAAACAAAAAAAAACAAAAAQAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Order\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoffeeShop.OrderItem">
-    <Position X="26.25" Y="3.75" Width="1.5" />
+    <Position X="17.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
-      <FileName>OrderItem.cs</FileName>
+      <HashCode>AAAAAAIAAAAAABAAAAAAAAgAAAAAAAAAAAAAhAAAAAA=</HashCode>
+      <FileName>Order\OrderItem.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CoffeeShop.Supervisor" Collapsed="true">
-    <Position X="16.25" Y="4" Width="1.5" />
+  <Class Name="CoffeeShop.Supervisor">
+    <Position X="7.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAIAAAAFAAAAAAAAAAAAAAAAAASAAAAAAA=</HashCode>
-      <FileName>Supervisor.cs</FileName>
+      <HashCode>AABAAAAAAAAIAAAAEAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Roles\Supervisor.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="CoffeeShopMain" Collapsed="true">
-    <Position X="26.25" Y="2.75" Width="1.5" />
+  <Class Name="CoffeeShop.CoffeeShopMain">
+    <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAIAAgAIAAgAACAEAAAAAAAQDAAAAAA=</HashCode>
       <FileName>CoffeeShopMain.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="CoffeeShop.IOrderCanceller" Collapsed="true">
-    <Position X="26.25" Y="5" Width="1.5" />
+  <Class Name="CoffeeShop.Menu.Pastry">
+    <Position X="13" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAABAAAAAg=</HashCode>
+      <FileName>Menu\FoodItems\Pastry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeShop.Menu.Sandwiches">
+    <Position X="14.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menu\FoodItems\Sandwiches.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CoffeeShop.IOrderCanceller">
+    <Position X="17.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>IOrderCanceller.cs</FileName>
+      <FileName>Interfaces\IOrderCanceller.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="CoffeeShop.IOrderTaker" Collapsed="true">
-    <Position X="28" Y="5" Width="1.5" />
+  <Interface Name="CoffeeShop.IOrderTaker">
+    <Position X="19" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IOrderTaker.cs</FileName>
+      <FileName>Interfaces\IOrderTaker.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="CoffeeShop.IPaymentProcessor" Collapsed="true">
-    <Position X="26.25" Y="5.75" Width="1.5" />
+  <Interface Name="CoffeeShop.IPaymentProcessor">
+    <Position X="20.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IPaymentProcessor.cs</FileName>
+      <FileName>Interfaces\IPaymentProcessor.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="CoffeeShop.TeaType" Collapsed="true">
-    <Position X="29.75" Y="6.75" Width="1.5" />
+  <Enum Name="CoffeeShop.TeaType">
+    <Position X="20.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAA=</HashCode>
-      <FileName>TeaType.cs</FileName>
+      <FileName>Enums\TeaType.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="CoffeeShop.OrderStatus" Collapsed="true">
-    <Position X="26.25" Y="6.75" Width="1.5" />
+  <Enum Name="CoffeeShop.OrderStatus">
+    <Position X="17.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
-      <FileName>OrderStatus.cs</FileName>
+      <FileName>Order\OrderStatus.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="CoffeeShop.RoleType" Collapsed="true">
-    <Position X="28" Y="6.75" Width="1.5" />
+  <Enum Name="CoffeeShop.RoleType">
+    <Position X="19" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAEAIAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
-      <FileName>RoleType.cs</FileName>
+      <FileName>Enums\RoleType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CoffeeShop.Enums.PastriesType">
+    <Position X="19" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAgAAAAAAAAAAAAAAAAAAAQAAAAAAAAAgAEAA=</HashCode>
+      <FileName>Enums\PastriesType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CoffeeShop.Enums.SandwichType">
+    <Position X="17.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAIAAAEAAAAAAAAAAAAAgACAAAA=</HashCode>
+      <FileName>Enums\SandwichType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
