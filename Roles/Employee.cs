@@ -14,7 +14,14 @@ namespace CoffeeShop
 
       
         private double Salary { get; set; }
-        protected bool IsAvaliable { get; set; }
+        public DateTime ShiftStart { get; set; }
+        public DateTime ShiftEnd { get; set; }
 
+
+        public bool IsOnShift()
+        {
+            DateTime now = DateTime.Now;
+            return now >= ShiftStart && now <= ShiftEnd;
+        }
     }
 }

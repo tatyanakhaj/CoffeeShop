@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop
 {
-    abstract class MenuItem
+    public class MenuItem
     {
         protected int ID { get; set; } 
         public string Name { get; set; }    
@@ -14,9 +14,9 @@ namespace CoffeeShop
 
         public double Price { get; set; } 
 
-        public bool IsAvaliable { get; set; }  
-        
+        public bool IsAvaliable { get; set; }
 
+        public string Category { get; set; }
 
     }
 }

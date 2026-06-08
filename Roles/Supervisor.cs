@@ -8,12 +8,8 @@ namespace CoffeeShop
 {
     internal class Supervisor:Employee, IOrderTaker, IOrderCanceller
     {
-        public Supervisor(List<Employee> managedEmployees)
-        {
-            ManagedEmployees = managedEmployees;
-        }
-
-        public List<Employee> ManagedEmployees { get; set; }
+     
+            
         public override RoleType Role { get; set; } = RoleType.Supervisor;
       
         public bool CanReassignTasks { get; set; }
