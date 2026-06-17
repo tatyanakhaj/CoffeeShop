@@ -1,4 +1,5 @@
-﻿using CoffeeShop.Enums;
+﻿using CoffeeShop;
+using CoffeeShop.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,8 +39,12 @@ namespace CoffeeShop
                 Console.WriteLine("You are not on shift!");
                 return;
             }
+            OrderBuilder builder = new OrderBuilder();
 
-            Order order = new Order { Id = 1, Status = OrderStatus.Created };
+            Order order = builder
+                .SetId(1)
+                .SetStatus(OrderStatus.Created)
+                .Build();
 
             bool running = true;
 
@@ -63,7 +68,7 @@ namespace CoffeeShop
                 switch (choice)
                 {
                     case 1:
-                        OpenOrder(emp, order);
+                        OpenOrder(emp, builder);
                         break;
 
                     case 2:
@@ -129,16 +134,13 @@ namespace CoffeeShop
         }
 
         // OPEN ORDER
-        static void OpenOrder(Employee emp, Order order)
+        static void OpenOrder(Employee emp, OrderBuilder builder)
         {
             if (emp is not IOrderTaker)
             {
                 Console.WriteLine("You cannot open orders!");
                 return;
             }
-
-            if (order.Items == null)
-                order.Items = new List<OrderItem>();
 
             Console.WriteLine("Menu:");
 
@@ -181,9 +183,7 @@ namespace CoffeeShop
                     foreach (var t in Enum.GetValues(typeof(TeaType)))
                         Console.WriteLine($"- {t}");
 
-                    string typeInput = Console.ReadLine();
-
-                    selectedType = (TeaType)Enum.Parse(typeof(TeaType), typeInput, true);
+                    selectedType = (TeaType)Enum.Parse(typeof(TeaType), Console.ReadLine(), true);
                 }
                 else if (selected.Category == "Sandwich")
                 {
@@ -191,9 +191,7 @@ namespace CoffeeShop
                     foreach (var t in Enum.GetValues(typeof(SandwichType)))
                         Console.WriteLine($"- {t}");
 
-                    string typeInput = Console.ReadLine();
-
-                    selectedType = (SandwichType)Enum.Parse(typeof(SandwichType), typeInput, true);
+                    selectedType = (SandwichType)Enum.Parse(typeof(SandwichType), Console.ReadLine(), true);
                 }
                 else if (selected.Category == "Pastry")
                 {
@@ -201,48 +199,25 @@ namespace CoffeeShop
                     foreach (var t in Enum.GetValues(typeof(PastriesType)))
                         Console.WriteLine($"- {t}");
 
-                    string typeInput = Console.ReadLine();
-
-                    selectedType = (PastriesType)Enum.Parse(typeof(PastriesType), typeInput, true);
+                    selectedType = (PastriesType)Enum.Parse(typeof(PastriesType), Console.ReadLine(), true);
                 }
 
-                order.Items.Add(new OrderItem
+                builder.AddItem(new OrderItem
                 {
                     MenuItem = selected,
                     Quantity = qty,
-                    TeaType = selectedType as TeaType?,
-                    SandwichType = selectedType as SandwichType?,
-                    PastriesType = selectedType as PastriesType?
+                    TeaType = selected.Category == "Tea" ? (TeaType?)selectedType : null,
+                    SandwichType = selected.Category == "Sandwich" ? (SandwichType?)selectedType : null,
+                    PastriesType = selected.Category == "Pastry" ? (PastriesType?)selectedType : null
                 });
 
-                double total = order.CalculateTotal();
-
-                Console.WriteLine($"\nTOTAL: {total} lv");
-
-                Console.Write("\nEnter paid amount: ");
-                if (!double.TryParse(Console.ReadLine(), out double paid))
-                {
-                    Console.WriteLine("Invalid payment!");
-                    return;
-                }
-
-                if (paid < total)
-                {
-                    Console.WriteLine("Not enough money!");
-                    return;
-                }
-
-                double change = paid - total;
-
-                Console.WriteLine($"Paid: {paid} lv");
-                Console.WriteLine($"Change: {change} lv");
-
-                order.Status = OrderStatus.Completed;
-
-                Console.WriteLine("\nHave a nice day!");
+                Console.WriteLine($"Added {qty} x {selected.Name}");
             }
+
+            Console.WriteLine("\nOrder created successfully!");
         }
-            static void CloseOrder(Employee emp, Order order)
+        
+static void CloseOrder(Employee emp, Order order)
             {
                 if (emp is not IPaymentProcessor)
                 {
