@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop
 {
-    interface IPaymentProcessor
+    public interface IPaymentProcessor
     {
         void ProcessPayment(Order order, double paidAmount, string method);
     }

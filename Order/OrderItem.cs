@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop
 {
-    internal class OrderItem
+    public class OrderItem
     {
         public MenuItem MenuItem { get; set; } 
         public int Quantity { get; set; }

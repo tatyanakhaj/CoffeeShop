@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop
 {
-    interface IOrderTaker
+   public interface IOrderTaker
     {
         void TakeOrder(Order order, List<MenuItem> menu);
     }

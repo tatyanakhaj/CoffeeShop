@@ -7,7 +7,7 @@ namespace CoffeeShop
 {
     internal class CoffeeShopMain
     {
-        static List<Employee> employees = new List<Employee>
+        static public List<Employee> employees = new List<Employee>
         {
             new Manager(),
             new Supervisor(),
@@ -15,7 +15,7 @@ namespace CoffeeShop
             new Cashier()
         };
 
-        static List<MenuItem> menu = new List<MenuItem>
+        public List<MenuItem> menu = new List<MenuItem>
         {
             new MenuItem { Name = "Coffee", Price = 3 },
             new MenuItem { Name = "Tea", Price = 2 },
@@ -24,16 +24,20 @@ namespace CoffeeShop
             new MenuItem { Name = "Pastrey", Price = 6 }
         };
 
-        static void Main()
+        public static void Main()
         {
-            // TODO: move all Main logic and static classes to ShiftManager class.
-            //       Static is not good - change them to regular methods
+            //DONE: Moved all shift methods in IShiftWorker and ShiftManage
+            //Added 'Builder' pattern for Order class   
+            //'Cashier' implemented IOrderTaker and IPaymentProcessor interfaces    
 
-            SetShifts();
 
-            ShowWhoIsOnShift();
+            var app = new CoffeeShopMain();
 
-            Employee emp = Login();
+
+            ShiftManage.SetShifts(CoffeeShopMain.employees);
+            ShiftManage.ShowWhoIsOnShift(CoffeeShopMain.employees);
+
+            Employee emp = app.Login();
             if (emp == null) return;
 
             if (!emp.IsOnShift())
@@ -42,7 +46,21 @@ namespace CoffeeShop
                 return;
             }
 
-            Order order = new Order { Id = 1, Status = OrderStatus.Created };
+
+            OrderBuilder builder = new OrderBuilder();
+            builder.SetId(1);
+            app.OpenOrder(emp, builder);
+            Console.WriteLine("\nDo you want to close the order? (yes/no)");
+            string input = Console.ReadLine();
+
+            if (input.Equals("yes", StringComparison.OrdinalIgnoreCase))
+            {
+                app.CloseOrder(emp, builder);
+            }
+            else
+            {
+                app.CancelOrder(emp, builder);
+            }
 
             bool running = true;
 
@@ -66,19 +84,19 @@ namespace CoffeeShop
                 switch (choice)
                 {
                     case 1:
-                        OpenOrder(emp, order);
+                        app.OpenOrder(emp, builder);
                         break;
 
                     case 2:
-                        CloseOrder(emp, order);
+                        app.CloseOrder(emp, builder);
                         break;
 
                     case 3:
-                        CancelOrder(emp, order);
+                        app.CancelOrder(emp, builder);
                         break;
 
                     case 4:
-                        CloseShift(emp);
+                        ShiftManage.CloseShift(emp);
                         running = false;
                         break;
 
@@ -89,29 +107,8 @@ namespace CoffeeShop
             }
         }
 
-        //  SHIFT
-        static void SetShifts()
-        {
-            foreach (var emp in employees)
-            {
-                emp.ShiftStart = DateTime.Now.AddHours(-1);
-                emp.ShiftEnd = DateTime.Now.AddHours(2);
-            }
-        }
-
-        static void ShowWhoIsOnShift()
-        {
-            Console.WriteLine("Employees on shift:");
-
-            foreach (var emp in employees)
-            {
-                if (emp.IsOnShift())
-                    Console.WriteLine($"- {emp.Role}");
-            }
-        }
-
         // LOGIN
-        static Employee Login()
+        public Employee Login()
         {
             Console.WriteLine("\nLogin as:");
             Console.WriteLine("1 - Manager");
@@ -132,16 +129,13 @@ namespace CoffeeShop
         }
 
         // OPEN ORDER
-        static void OpenOrder(Employee emp, Order order)
+        public void OpenOrder(Employee emp, OrderBuilder builder)
         {
             if (emp is not IOrderTaker)
             {
                 Console.WriteLine("You cannot open orders!");
                 return;
             }
-
-            if (order.Items == null)
-                order.Items = new List<OrderItem>();
 
             Console.WriteLine("Menu:");
 
@@ -184,9 +178,7 @@ namespace CoffeeShop
                     foreach (var t in Enum.GetValues(typeof(TeaType)))
                         Console.WriteLine($"- {t}");
 
-                    string typeInput = Console.ReadLine();
-
-                    selectedType = (TeaType)Enum.Parse(typeof(TeaType), typeInput, true);
+                    selectedType = (TeaType)Enum.Parse(typeof(TeaType), Console.ReadLine(), true);
                 }
                 else if (selected.Category == "Sandwich")
                 {
@@ -194,9 +186,7 @@ namespace CoffeeShop
                     foreach (var t in Enum.GetValues(typeof(SandwichType)))
                         Console.WriteLine($"- {t}");
 
-                    string typeInput = Console.ReadLine();
-
-                    selectedType = (SandwichType)Enum.Parse(typeof(SandwichType), typeInput, true);
+                    selectedType = (SandwichType)Enum.Parse(typeof(SandwichType), Console.ReadLine(), true);
                 }
                 else if (selected.Category == "Pastry")
                 {
@@ -204,12 +194,10 @@ namespace CoffeeShop
                     foreach (var t in Enum.GetValues(typeof(PastriesType)))
                         Console.WriteLine($"- {t}");
 
-                    string typeInput = Console.ReadLine();
-
-                    selectedType = (PastriesType)Enum.Parse(typeof(PastriesType), typeInput, true);
+                    selectedType = (PastriesType)Enum.Parse(typeof(PastriesType), Console.ReadLine(), true);
                 }
 
-                order.Items.Add(new OrderItem
+                builder.AddItem(new OrderItem
                 {
                     MenuItem = selected,
                     Quantity = qty,
@@ -217,17 +205,19 @@ namespace CoffeeShop
                     SandwichType = selectedType as SandwichType?,
                     PastriesType = selectedType as PastriesType?
                 });
-
-                CloseOrder(emp, order);
             }
         }
-        static void CloseOrder(Employee emp, Order order)
+
+
+        public void CloseOrder(Employee emp, OrderBuilder builder)
         {
             if (emp is not IPaymentProcessor)
             {
                 Console.WriteLine("You cannot close orders!");
                 return;
             }
+
+            Order order = builder.Build();
 
             if (order.Items == null || order.Items.Count == 0)
             {
@@ -259,11 +249,12 @@ namespace CoffeeShop
 
             order.Status = OrderStatus.Completed;
 
-            Console.WriteLine("Have a nice day!");
-        }
+            Console.WriteLine("Order completed. Have a nice day!");
 
-        // CANCEL
-        static void CancelOrder(Employee emp, Order order)
+           
+            builder.Reset();
+        }
+        public void CancelOrder(Employee emp, OrderBuilder builder)
         {
             if (emp is not IOrderCanceller)
             {
@@ -271,21 +262,23 @@ namespace CoffeeShop
                 return;
             }
 
-            order.Status = OrderStatus.Cancelled;
-            Console.WriteLine("Order cancelled.");
-        }
+            Order order = builder.Build();
 
-        // CLOSE SHIFT
-        static void CloseShift(Employee emp)
-        {
-            if (emp is not Manager)
+            if (order.Items == null || order.Items.Count == 0)
             {
-                Console.WriteLine("Only manager can close shift!");
+                Console.WriteLine("Nothing to cancel!");
                 return;
             }
 
-            Console.WriteLine("Shift closed.");
+            order.Status = OrderStatus.Cancelled;
+
+            Console.WriteLine("Order cancelled.");
+
+            
+            builder.Reset();
         }
+
+       
     }
 }
 
