@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Enums
 {
-    enum PastriesType
+    public enum PastriesType
     {
         Chocolate,
         Vanilla,

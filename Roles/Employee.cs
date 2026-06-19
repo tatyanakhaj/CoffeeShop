@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop
 {
-    abstract class Employee
+    abstract class Employee:IShiftWorker
+
     {
         protected int ID { get; set; }
         protected string Name { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop
 {
-    internal class Order
+    public class Order
     {
         public int Id { get; set; }
 
@@ -17,14 +17,17 @@ namespace CoffeeShop
 
         public double TotalPrice { get; set; }
 
-
-
+        
         public double CalculateTotal()
         {
-            return Items.Sum(i => i.MenuItem.Price * i.Quantity);
+            double total = 0;
+            if (Items != null && Items.Count > 0)
+            {
+                total = Items.Sum(i => (i?.MenuItem?.Price ?? 0) * i.Quantity);
+            }
+            TotalPrice = total;
+            return total;
         }
-
-
-
+       
     }
 }

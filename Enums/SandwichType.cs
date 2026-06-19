@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.Enums
 {
-    enum SandwichType
+    public enum SandwichType
     {
     Club,
     Chicken,

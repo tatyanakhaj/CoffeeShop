@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop
 {
-  enum TeaType
+  public enum TeaType
     {
         Fruit,
         Green,
