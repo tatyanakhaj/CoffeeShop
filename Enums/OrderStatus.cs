@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop
 {
-    enum OrderStatus
+    public enum OrderStatus
     {
         Created,
         Ready,
