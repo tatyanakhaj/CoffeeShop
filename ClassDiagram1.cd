@@ -17,9 +17,10 @@
   <Class Name="CoffeeShop.Cashier">
     <Position X="5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAQAAAEAQAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AABAAAAAAACAQAAAEAQAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Roles\Cashier.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="CoffeeShop.Coffee">
     <Position X="11" Y="8" Width="1.5" />
@@ -41,6 +42,7 @@
       <HashCode>AAAAACAAAAAAgAAEEIAAAAQAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Roles\Employee.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="CoffeeShop.Food">
     <Position X="13.5" Y="3.75" Width="1.5" />
@@ -96,7 +98,7 @@
   <Class Name="CoffeeShop.CoffeeShopMain">
     <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAIAAgAIAAgAACAEAAAAAAAQDAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAgAACAAAAAAAAAQDAAAAAA=</HashCode>
       <FileName>CoffeeShopMain.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -112,6 +114,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Menu\FoodItems\Sandwiches.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoffeeShop.ShiftManage">
+    <Position X="4.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAgAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ShiftManage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="CoffeeShop.IOrderCanceller">
